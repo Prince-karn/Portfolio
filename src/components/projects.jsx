@@ -179,7 +179,7 @@ const Projects = () => {
               </motion.div>
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
       </div>
     </section>
