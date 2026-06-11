@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 export default async function handler(req, res) {
   // Allow CORS
   res.setHeader('Access-Control-Allow-Credentials', true);
@@ -15,7 +18,79 @@ export default async function handler(req, res) {
 
   const backendUrl = process.env.BACKEND_URL;
   if (!backendUrl) {
-    return res.status(500).json({ error: 'BACKEND_URL environment variable is not set on Vercel.' });
+    // Fallback: Handle submissions directly in memory / /tmp/ folder
+    const SUBMISSIONS_FILE = '/tmp/submissions.json';
+    const readSubmissions = () => {
+      try {
+        if (!fs.existsSync(SUBMISSIONS_FILE)) return [];
+        return JSON.parse(fs.readFileSync(SUBMISSIONS_FILE, 'utf8') || '[]');
+      } catch (e) {
+        return [];
+      }
+    };
+    const writeSubmissions = (data) => {
+      try {
+        fs.writeFileSync(SUBMISSIONS_FILE, JSON.stringify(data, null, 2), 'utf8');
+      } catch (e) {}
+    };
+
+    const apiPath = req.url.replace(/^\/api\/?/, '').split('?')[0];
+
+    if (apiPath === 'contact' && req.method === 'POST') {
+      const { name, email, whatsapp, type, message, otherText } = req.body;
+      if (!name || !email || !message) {
+        return res.status(400).json({ error: 'Name, email, and message are required.' });
+      }
+      const submissions = readSubmissions();
+      const newSubmission = {
+        id: Date.now().toString(),
+        name,
+        email,
+        whatsapp: whatsapp || undefined,
+        type,
+        otherText: type === 'others' ? otherText : undefined,
+        message,
+        createdAt: new Date().toISOString(),
+        status: 'pending'
+      };
+      submissions.unshift(newSubmission);
+      writeSubmissions(submissions);
+      return res.status(201).json({ success: true, submission: newSubmission });
+    }
+
+    if (apiPath === 'login' && req.method === 'POST') {
+      const { username, password } = req.body;
+      if (username === 'admin' && password === 'admin123') {
+        return res.json({ success: true, token: 'super-secret-admin-token-404' });
+      }
+      return res.status(401).json({ error: 'Invalid username or password' });
+    }
+
+    if (apiPath === 'submissions' && req.method === 'GET') {
+      const token = req.headers.authorization;
+      if (token !== 'super-secret-admin-token-404') {
+        return res.status(403).json({ error: 'Unauthorized access.' });
+      }
+      return res.json(readSubmissions());
+    }
+
+    if (apiPath.startsWith('submissions/') && apiPath.endsWith('/resolve') && req.method === 'POST') {
+      const token = req.headers.authorization;
+      if (token !== 'super-secret-admin-token-404') {
+        return res.status(403).json({ error: 'Unauthorized access.' });
+      }
+      const id = apiPath.split('/')[1];
+      const submissions = readSubmissions();
+      const index = submissions.findIndex(s => s.id === id);
+      if (index !== -1) {
+        submissions[index].status = 'resolved';
+        writeSubmissions(submissions);
+        return res.json({ success: true, submission: submissions[index] });
+      }
+      return res.status(404).json({ error: 'Submission not found' });
+    }
+
+    return res.status(404).json({ error: 'Not Found' });
   }
 
   // Get the path from the URL, e.g. /api/contact -> contact
