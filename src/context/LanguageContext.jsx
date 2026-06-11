@@ -145,24 +145,28 @@ const translations = {
       live: "Live Demo",
       list: [
         {
-          title: "VeloQuest Ride Tracker",
-          description: "Custom cross-platform cycling navigation and route planner deployed for a bicycle touring enterprise in Brussels, Belgium."
+          title: "Maison De Crayer",
+          description: "A premium, elegant boutique hotel website developed for a European client in Ghent, Belgium, showcasing high-end rooms, amenities, and booking integrations with gorgeous dark aesthetics."
         },
         {
-          title: "ShopFlow Headless Storefront",
-          description: "Ultra-fast Next.js headless e-commerce portal integrated with custom Shopify APIs, built for a retail brand in Antwerp, Belgium."
+          title: "Tradafy Platform",
+          description: "A MERN-stack global B2B trading platform with secure client portals for suppliers, buyers, and shipping agents to manage and streamline worldwide imports and exports."
         },
         {
-          title: "BharatBazaar Delivery Control",
-          description: "High-throughput real-time logistics dashboard tracking and routing daily parcel deliveries across metro areas in India."
+          title: "Bright Citrine Global",
+          description: "A corporate web application for a multinational trade consultancy and supply chain group, facilitating global cargo management, import-export operations, and product tracking."
         },
         {
-          title: "FinGrow Wealth Portal",
-          description: "A secure investment tracking mobile application with biometric login and real-time Indian stock market price updates."
+          title: "Zaptro Electronics",
+          description: "A high-performance modern e-commerce storefront for next-gen electronics, complete with dynamic shopping carts, product category filters, address management, and fully responsive layouts."
         },
         {
-          title: "ImmoHub Listing Directory",
-          description: "A clean, map-based residential property finding website serving clients and agents in Ghent, Belgium."
+          title: "JNE Smart Technologies",
+          description: "An industrial IoT and smart energy management website built to monitor intelligent electrical systems, smart meters, and next-generation energy analytics platforms."
+        },
+        {
+          title: "TaxiWave Belgium",
+          description: "A modern ride-hailing and premium taxi booking platform serving major Belgian cities and airports, integrated with real-time leaflet maps and location search."
         }
       ]
     },
@@ -180,9 +184,12 @@ const translations = {
       form: {
         name: "Your Name",
         email: "Email Address",
+        whatsapp: "WhatsApp Number",
         building: "What are we building?",
         web: "Web Application",
         mobile: "Mobile App",
+        others: "Others",
+        othersPlaceholder: "Please specify what you want to build...",
         details: "Project Details",
         placeholder: "Briefly describe your requirements or ideas...",
         submit: "Send Proposal Request"
@@ -335,24 +342,28 @@ const translations = {
       live: "Live Demo",
       list: [
         {
-          title: "VeloQuest Routeplanner",
-          description: "Gepersonaliseerde cross-platform cycling navigatie en routeplanner uitgerold voor een fietstoerisme-onderneming in Brussel, België."
+          title: "Maison De Crayer",
+          description: "Een premium, elegante website voor een boetiekhotel ontwikkeld voor een Europese klant in Gent, België, met luxe kamers, voorzieningen en boekingsintegraties."
         },
         {
-          title: "ShopFlow Headless Storefront",
-          description: "Ultrasnel Next.js headless e-commerceportaal geïntegreerd met op maat gemaakte Shopify API's, gebouwd voor een retailmerk in Antwerpen, België."
+          title: "Tradafy Platform",
+          description: "Een MERN-stack wereldwijd B2B-handelsplatform met beveiligde klantportalen voor leveranciers, kopers en expediteurs om wereldwijde import en export te beheren."
         },
         {
-          title: "BharatBazaar Delivery Control",
-          description: "Real-time logistiek dashboard met hoge doorvoer voor het volgen en routeren van dagelijkse pakketleveringen in Indiase metropolen."
+          title: "Bright Citrine Global",
+          description: "Een zakelijke webapplicatie voor een multinationale handelsadvies- en toeleveringsketengroep, die wereldwijd vrachtbeheer en import-exportactiviteiten vergemakkelijkt."
         },
         {
-          title: "FinGrow Wealth Portal",
-          description: "Een veilige mobiele app voor het bijhouden van investeringen met biometrische login en real-time updates van de Indiase aandelenmarkt."
+          title: "Zaptro Elektronica",
+          description: "Een krachtige moderne e-commerce winkel voor elektronica van de volgende generatie, compleet met dynamische winkelwagentjes, productcategorie-filters en adresbeheer."
         },
         {
-          title: "ImmoHub Listing Directory",
-          description: "Een schone, kaartgebaseerde website voor het zoeken naar woningen, ten dienste van klanten en makelaars in Gent, België."
+          title: "JNE Smart Technologies",
+          description: "Een industriële IoT- en slimme energiebeheerwebsite gebouwd om intelligente elektrische systemen, slimme meters en next-generation energie-analyseplatforms te monitoren."
+        },
+        {
+          title: "TaxiWave België",
+          description: "Een modern platform voor het bestellen van ritten en premium taxiboekingen in de belangrijkste Belgische steden en luchthavens, geïntegreerd met realtime kaarten."
         }
       ]
     },
@@ -370,9 +381,12 @@ const translations = {
       form: {
         name: "Uw Naam",
         email: "E-mailadres",
+        whatsapp: "WhatsApp-nummer",
         building: "Wat gaan we bouwen?",
         web: "Webapplicatie",
         mobile: "Mobiele App",
+        others: "Anders",
+        othersPlaceholder: "Geef aan wat u wilt bouwen...",
         details: "Projectdetails",
         placeholder: "Beschrijf kort uw wensen of ideeën...",
         submit: "Verzend Voorstel-Aanvraag"
@@ -525,24 +539,28 @@ const translations = {
       live: "Démo Live",
       list: [
         {
-          title: "VeloQuest Ride Tracker",
-          description: "Outil de navigation et de planification d'itinéraires cyclistes multiplateforme déployé pour une entreprise de tourisme à vélo à Bruxelles, en Belgique."
+          title: "Maison De Crayer",
+          description: "Un site web élégant et haut de gamme pour un hôtel-boutique conçu pour un client européen à Gand, en Belgique, présentant des chambres de luxe, des équipements et des intégrations de réservation."
         },
         {
-          title: "Boutique Headless ShopFlow",
-          description: "Portail e-commerce ultra-rapide Next.js headless intégré avec les API Shopify, conçu pour une marque de vente au détail à Anvers, en Belgique."
+          title: "Tradafy Platform",
+          description: "Une plateforme de commerce B2B mondiale basée sur la pile MERN avec des portails clients sécurisés pour les fournisseurs, les acheteurs et les agents maritimes."
         },
         {
-          title: "BharatBazaar Delivery Control",
-          description: "Tableau de bord logistique en temps réel à haut débit pour le suivi et le routage des livraisons quotidiennes dans les zones métropolitaines en Inde."
+          title: "Bright Citrine Global",
+          description: "Une application web d'entreprise pour un groupe multinational de conseil en commerce et de chaîne d'approvisionnement, facilitant la gestion globale du fret et de l'import-export."
         },
         {
-          title: "Portail de Richesse FinGrow",
-          description: "Une application mobile sécurisée de suivi des investissements avec authentification biométrique et prix du marché boursier indien en temps réel."
+          title: "Zaptro Électronique",
+          description: "Une boutique en ligne moderne et performante pour l'électronique de nouvelle génération, avec paniers d'achat dynamiques, filtres de catégories et gestion des adresses."
         },
         {
-          title: "ImmoHub Listing Directory",
-          description: "Un site web épuré de recherche de biens immobiliers basé sur une carte, au service des clients et des agents à Gand, en Belgique."
+          title: "JNE Smart Technologies",
+          description: "Un site web d'IoT industriel et de gestion intelligente de l'énergie conçu pour surveiller les systèmes électriques intelligents, les compteurs communicants et les plateformes d'analyse d'énergie."
+        },
+        {
+          title: "TaxiWave Belgique",
+          description: "Une plateforme moderne de réservation de taxis premium et de covoiturage desservant les principales villes et aéroports de Belgique, intégrée avec des cartes interactives."
         }
       ]
     },
@@ -560,9 +578,12 @@ const translations = {
       form: {
         name: "Votre Nom",
         email: "Adresse Email",
+        whatsapp: "Numéro de WhatsApp",
         building: "Que construisons-nous ?",
         web: "Application Web",
         mobile: "Application Mobile",
+        others: "Autres",
+        othersPlaceholder: "Veuillez préciser ce que vous souhaitez construire...",
         details: "Détails du Projet",
         placeholder: "Décrivez brièvement vos besoins ou vos idées...",
         submit: "Envoyer la Demande de Proposition"
@@ -715,24 +736,28 @@ const translations = {
       live: "Live-Demo",
       list: [
         {
-          title: "VeloQuest Fahrrad-Tracker",
-          description: "Plattformübergreifende Fahrradnavigation und Routenplaner, bereitgestellt für ein Fahrradtourismusunternehmen in Brüssel, Belgien."
+          title: "Maison De Crayer",
+          description: "Eine erstklassige, elegante Boutique-Hotel-Website für einen europäischen Kunden in Gent, Belgien, mit luxuriösen Zimmern, Annehmlichkeiten und Buchungsintegrationen."
         },
         {
-          title: "ShopFlow Headless Storefront",
-          description: "Ultraschnelles, kopfloses Next.js-E-Commerce-Portal mit benutzerdefinierten Shopify-APIs, entwickelt für eine Marke in Antwerpen, Belgien."
+          title: "Tradafy Platform",
+          description: "Eine globale B2B-Handelsplattform auf MERN-Stack-Basis mit sicheren Kundenportalen für Lieferanten, Einkäufer und Speditionen zur Steuerung weltweiter Importe und Exporte."
         },
         {
-          title: "BharatBazaar Delivery Control",
-          description: "Logistik-Dashboard mit hohem Durchsatz zur Echtzeit-Verfolgung und -Steuerung täglicher Paketzustellungen in indischen Metropolregionen."
+          title: "Bright Citrine Global",
+          description: "Eine Corporate-Webanwendung für eine multinationale Handelsberatungs- und Lieferkettengruppe, die das globale Frachtmanagement und Import-Export-Aktivitäten erleichtert."
         },
         {
-          title: "FinGrow Wealth Portal",
-          description: "Eine sichere mobile Anwendung zur Investitionsverfolgung mit biometrischem Login und Echtzeit-Updates der indischen Börse."
+          title: "Zaptro Elektronik",
+          description: "Ein leistungsstarker, moderner E-Commerce-Storefront für Elektronik der nächsten Generation, komplett mit dynamischen Warenkörben, Produktkategorie-Filtern und Adressverwaltung."
         },
         {
-          title: "ImmoHub Immobilienverzeichnis",
-          description: "Eine saubere, kartenbasierte Website zur Immobiliensuche für Kunden und Makler in Gent, Belgien."
+          title: "JNE Smart Technologies",
+          description: "Eine industrielle IoT- und intelligente Energiemanagement-Website zur Überwachung intelligenter elektrischer Systeme, intelligenter Messgeräte (Smart Meter) und Energieanalyseplattformen."
+        },
+        {
+          title: "TaxiWave Belgien",
+          description: "Eine moderne Fahrvermittlungs- und Premium-Taxibuchungsplattform für belgische Großstädte und Flughäfen, integriert mit Echtzeit-Kartenansichten."
         }
       ]
     },
@@ -750,9 +775,12 @@ const translations = {
       form: {
         name: "Ihr Name",
         email: "E-Mail-Adresse",
+        whatsapp: "WhatsApp-Nummer",
         building: "Was bauen wir?",
         web: "Webanwendung",
         mobile: "Mobile App",
+        others: "Anderes",
+        othersPlaceholder: "Bitte geben Sie an, was Sie bauen möchten...",
         details: "Projektdetails",
         placeholder: "Beschreiben Sie kurz Ihre Anforderungen oder Ideen...",
         submit: "Angebotsanfrage absenden"
@@ -905,24 +933,28 @@ const translations = {
       live: "Demo en Vivo",
       list: [
         {
-          title: "VeloQuest Ride Tracker",
-          description: "Planificador de rutas y navegación de ciclismo multiplataforma a medida, desplegado para una empresa de turismo ciclista en Bruselas, Bélgica."
+          title: "Maison De Crayer",
+          description: "Un sitio web elegante y de primera categoría para un hotel boutique diseñado para un cliente europeo en Gante, Bélgica, que muestra habitaciones de lujo y servicios de reserva."
         },
         {
-          title: "Tienda Headless ShopFlow",
-          description: "Portal e-commerce ultra rápido con Next.js integrado con APIs a medida de Shopify, desarrollado para una marca comercial en Amberes, Bélgica."
+          title: "Tradafy Platform",
+          description: "Una plataforma global de comercio B2B basada en MERN stack con portales seguros para proveedores, compradores y agentes de transporte."
         },
         {
-          title: "BharatBazaar Delivery Control",
-          description: "Panel de control logístico a tiempo real de alto rendimiento para el seguimiento y distribución de paquetes en las metrópolis de la India."
+          title: "Bright Citrine Global",
+          description: "Una aplicación web corporativa para un grupo multinacional de consultoría comercial y cadena de suministro, que facilita la gestión global de carga e importaciones/exportaciones."
         },
         {
-          title: "FinGrow Wealth Portal",
-          description: "Aplicación móvil de seguimiento financiero seguro con inicio biométrico y cotización de la bolsa india en tiempo real."
+          title: "Zaptro Electrónica",
+          description: "Una tienda de comercio electrónico moderna y de alto rendimiento para productos electrónicos de última generación, con carritos de compra dinámicos y gestión de direcciones."
         },
         {
-          title: "ImmoHub Listing Directory",
-          description: "Portal web interactivo para la búsqueda inmobiliaria mediante mapas, para agentes y compradores en Gante, Bélgica."
+          title: "JNE Smart Technologies",
+          description: "Un sitio web de IoT industrial y gestión inteligente de energía creado para monitorear sistemas eléctricos inteligentes, medidores inteligentes y plataformas analíticas de energía."
+        },
+        {
+          title: "TaxiWave Bélgica",
+          description: "Una plataforma moderna de reserva de taxis premium y transporte privado que opera en las principales ciudades y aeropuertos belgas, integrada con mapas en tiempo real."
         }
       ]
     },
@@ -940,9 +972,12 @@ const translations = {
       form: {
         name: "Su Nombre",
         email: "Correo Electrónico",
+        whatsapp: "Número de WhatsApp",
         building: "¿Qué estamos construyendo?",
         web: "Aplicación Web",
         mobile: "Aplicación Móvil",
+        others: "Otros",
+        othersPlaceholder: "Especifique qué desea construir...",
         details: "Detalles del Proyecto",
         placeholder: "Describa brevemente sus requisitos o ideas...",
         submit: "Enviar Solicitud de Propuesta"

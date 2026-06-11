@@ -5,19 +5,36 @@ import { useLanguage } from "../context/LanguageContext";
 import { GithubIcon, LinkedinIcon } from "./Icons";
 
 const Contact = () => {
-  const [form, setForm] = useState({ name: "", email: "", type: "web", message: "" });
+  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", type: "web", message: "", otherText: "" });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
   const { t } = useLanguage();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!form.name || !form.email || !form.message) return;
-    
-    // Simulate API Submission
-    setTimeout(() => {
-      setSubmitted(true);
-      setForm({ name: "", email: "", type: "web", message: "" });
-    }, 800);
+    setLoading(true);
+    setError("");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setSubmitted(true);
+        setForm({ name: "", email: "", whatsapp: "", type: "web", message: "", otherText: "" });
+      } else {
+        setError(data.error || "Submission failed. Please try again.");
+      }
+    } catch (err) {
+      setError("Server connection failed. Please check if backend is running.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -172,26 +189,55 @@ const Contact = () => {
                     />
                   </div>
 
+                  {/* WhatsApp field */}
+                  <div className="flex flex-col">
+                    <label className="text-xs font-mono text-gray-400 mb-2 uppercase tracking-wide">
+                      {t.contact.form.whatsapp}
+                    </label>
+                    <input
+                      type="tel"
+                      value={form.whatsapp}
+                      onChange={(e) => setForm({ ...form, whatsapp: e.target.value })}
+                      placeholder="e.g. +91 98765 43210"
+                      className="bg-black/45 border border-white/10 focus:border-[#FF6B00] rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-[#FF6B00] focus:shadow-[0_0_15px_rgba(255,107,0,0.15)] hover:border-white/20 transition-all duration-200"
+                    />
+                  </div>
+
                   {/* Project Type Select */}
                   <div className="flex flex-col">
                     <label className="text-xs font-mono text-gray-400 mb-2 uppercase tracking-wide">
                       {t.contact.form.building}
                     </label>
-                    <div className="grid grid-cols-2 gap-4">
-                      {["web", "mobile"].map((type) => (
+                    <div className="grid grid-cols-3 gap-3">
+                      {["web", "mobile", "others"].map((type) => (
                         <button
                           key={type}
                           type="button"
-                          onClick={() => setForm({ ...form, type })}
+                          onClick={() => setForm({ ...form, type, otherText: type !== "others" ? "" : form.otherText })}
                           className={`py-3.5 rounded-xl border text-sm font-semibold capitalize transition-all duration-300 ${
                             form.type === type
                               ? "bg-[#FF6B00]/10 border-[#FF6B00] text-[#FF6B00]"
                               : "bg-black/45 border-white/10 hover:border-white/20 text-gray-400"
                           }`}
                         >
-                          {type === "web" ? t.contact.form.web : t.contact.form.mobile}
+                          {type === "web" ? t.contact.form.web : type === "mobile" ? t.contact.form.mobile : t.contact.form.others}
                         </button>
                       ))}
+                    </div>
+
+                    {/* Others — expandable text field */}
+                    <div
+                      className="overflow-hidden transition-all duration-500"
+                      style={{ maxHeight: form.type === "others" ? "100px" : "0px", opacity: form.type === "others" ? 1 : 0, marginTop: form.type === "others" ? "12px" : "0px" }}
+                    >
+                      <input
+                        type="text"
+                        required={form.type === "others"}
+                        value={form.otherText}
+                        onChange={(e) => setForm({ ...form, otherText: e.target.value })}
+                        placeholder={t.contact.form.othersPlaceholder}
+                        className="w-full bg-black/45 border border-[#FF6B00]/40 focus:border-[#FF6B00] rounded-xl px-4 py-3.5 text-sm text-white placeholder-gray-600 focus:outline-none focus:ring-1 focus:ring-[#FF6B00] focus:shadow-[0_0_15px_rgba(255,107,0,0.15)] transition-all duration-200"
+                      />
                     </div>
                   </div>
 
@@ -210,13 +256,26 @@ const Contact = () => {
                     />
                   </div>
 
+                  {error && (
+                    <div className="text-red-500 text-xs font-mono bg-red-500/10 border border-red-500/20 px-4 py-2 rounded-xl">
+                      {error}
+                    </div>
+                  )}
+
                   {/* Submit button */}
                   <button
                     type="submit"
-                    className="w-full py-4 rounded-xl bg-gradient-to-r from-[#FF6B00] to-orange-600 hover:shadow-[0_0_20px_rgba(255,107,0,0.3)] text-white font-bold transition-all duration-300 flex items-center justify-center gap-2 text-sm"
+                    disabled={loading}
+                    className="w-full py-4 rounded-xl bg-gradient-to-r from-[#FF6B00] to-orange-600 hover:shadow-[0_0_20px_rgba(255,107,0,0.3)] text-white font-bold transition-all duration-300 flex items-center justify-center gap-2 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>{t.contact.form.submit}</span>
+                    {loading ? (
+                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                    ) : (
+                      <>
+                        <Send className="w-4 h-4" />
+                        <span>{t.contact.form.submit}</span>
+                      </>
+                    )}
                   </button>
 
                 </form>

@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, MapPin, ArrowUp, ArrowRight } from "lucide-react";
+import { Mail, MapPin, ArrowUp, ArrowRight, Lock } from "lucide-react";
 import { useLanguage } from "../context/LanguageContext";
 import Logo from "./Logo";
 import { GithubIcon, LinkedinIcon } from "./Icons";
@@ -119,7 +119,19 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="mt-8 md:mt-12 flex flex-col sm:flex-row justify-between items-center text-xs text-gray-500 gap-4 md:gap-6">
           <div className="flex flex-col sm:flex-row items-center gap-4 text-center sm:text-left">
-            <p>© {currentYear} 404 Curry not Found. {t.footer.allRights}</p>
+            <div className="flex items-center gap-3">
+              <p>© {currentYear} 404 Curry not Found. {t.footer.allRights}</p>
+              {/* Subtle Admin Login — only visible to those who know */}
+              <a
+                href="#admin"
+                title="Admin Login"
+                className="group flex items-center gap-1 opacity-20 hover:opacity-80 transition-all duration-300 cursor-pointer select-none"
+                style={{ textDecoration: 'none' }}
+              >
+                <Lock className="w-3 h-3 text-gray-400 group-hover:text-[#FF6B00] transition-colors duration-300" />
+                <span className="text-[10px] font-mono text-gray-500 group-hover:text-[#FF6B00] transition-colors duration-300 hidden sm:inline">Admin</span>
+              </a>
+            </div>
             <span className="hidden sm:inline text-white/10">|</span>
             <div className="flex items-center gap-4">
               <a href="#about" className="hover:text-[#FF6B00] transition-colors">{t.footer.privacy}</a>
